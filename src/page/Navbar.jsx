@@ -6,49 +6,49 @@ import {
 } from "react-icons/io5";
 import { FiArrowUpRight } from "react-icons/fi";
 
+// Menu data with environment-aware image paths
 const menuData = {
   "Services+": {
     label: "Core Services",
     items: [
-      { id: 1, title: "Search & Growth Strategy", image: "/sr1.webp" },
-      { id: 2, title: "Digital PR", image: "/sr2.webp" },
-      { id: 3, title: "Onsite SEO", image: "/sr3.webp" },
-      { id: 4, title: "Social Media & Campaigns", image: "/sr4.webp" },
-      { id: 5, title: "Content Experience", image: "/sr5.webp" },
-      { id: 6, title: "Data & Insights", image: "/sr6.webp" },
-      { id: 7, title: "B2B Marketing", image: "/sr7.webp" },
-      { id: 8, title: "Social SEO/Search", image: "/sr8.webp" },
+      { id: 1, title: "Search & Growth Strategy", image: `${import.meta.env.BASE_URL}sr1.webp` },
+      { id: 2, title: "Digital PR", image: `${import.meta.env.BASE_URL}sr2.webp` },
+      { id: 3, title: "Onsite SEO", image: `${import.meta.env.BASE_URL}sr3.webp` },
+      { id: 4, title: "Social Media & Campaigns", image: `${import.meta.env.BASE_URL}sr4.webp` },
+      { id: 5, title: "Content Experience", image: `${import.meta.env.BASE_URL}sr5.webp` },
+      { id: 6, title: "Data & Insights", image: `${import.meta.env.BASE_URL}sr6.webp` },
+      { id: 7, title: "B2B Marketing", image: `${import.meta.env.BASE_URL}sr7.webp` },
+      { id: 8, title: "Social SEO/Search", image: `${import.meta.env.BASE_URL}sr8.webp` },
     ],
   },
   "Industries+": {
     label: "",
-    items: [{ id: 1, title: "B2B Marketing", image: "/sr4.webp" }],
+    items: [{ id: 1, title: "B2B Marketing", image: `${import.meta.env.BASE_URL}sr4.webp` }],
   },
   "International+": {
     label: "Global Reach",
     items: [
-      { id: 1, title: "US Digital PR", image: "/in1.webp" },
-      { id: 2, title: "Spain Digital PR", image: "/in2.webp" },
-      { id: 3, title: "Germany Digital PR", image: "/in3.webp" },
-      { id: 4, title: "Netherlands Digital PR", image: "/in4.webp" },
+      { id: 1, title: "US Digital PR", image: `${import.meta.env.BASE_URL}in1.webp` },
+      { id: 2, title: "Spain Digital PR", image: `${import.meta.env.BASE_URL}in2.webp` },
+      { id: 3, title: "Germany Digital PR", image: `${import.meta.env.BASE_URL}in3.webp` },
+      { id: 4, title: "Netherlands Digital PR", image: `${import.meta.env.BASE_URL}in4.webp` },
     ],
   },
   "About+": {
     label: "Our Story",
     items: [
-      { id: 1, title: "About Us", image: "/a1.webp" },
-      { id: 2, title: "Meet The Risers", image: "/a2.webp" },
-      { id: 3, title: "Culture", image: "/a3.webp" },
-      { id: 4, title: "Testimonials", image: "/a4.webp" },
+      { id: 1, title: "About Us", image: `${import.meta.env.BASE_URL}a1.webp` },
+      { id: 2, title: "Meet The Risers", image: `${import.meta.env.BASE_URL}a2.webp` },
+      { id: 3, title: "Culture", image: `${import.meta.env.BASE_URL}a3.webp` },
+      { id: 4, title: "Testimonials", image: `${import.meta.env.BASE_URL}a4.webp` },
     ],
   },
-
   "Blog And Resources+": {
     label: "Insights & Resources",
     items: [
-      { id: 1, title: "Blog", image: "/bl1.webp" },
-      { id: 2, title: "Category Leaderboard", image: "/bl2.webp" },
-      { id: 3, title: "Multi-channel Search Reaport", image: "/bl3.webp" },
+      { id: 1, title: "Blog", image: `${import.meta.env.BASE_URL}bl1.webp` },
+      { id: 2, title: "Category Leaderboard", image: `${import.meta.env.BASE_URL}bl2.webp` },
+      { id: 3, title: "Multi-channel Search Reaport", image: `${import.meta.env.BASE_URL}bl3.webp` },
     ],
   },
 };
@@ -62,7 +62,7 @@ const Navbar = ({ navbarRef }) => {
   });
   const [iconActive, setIconActive] = useState(false);
 
-  // Scroll logic states
+  // Scroll visibility and floating logic
   const [isVisible, setIsVisible] = useState(true);
   const [isFloating, setIsFloating] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -87,6 +87,7 @@ const Navbar = ({ navbarRef }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
+  // Handle body scroll and icon animation when mobile menu is open
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
@@ -113,6 +114,7 @@ const Navbar = ({ navbarRef }) => {
 
   return (
     <>
+      {/* Background Overlay */}
       <div
         className={`fixed inset-0 bg-black/15 backdrop-blur-md z-40 opacity-40 transition-all duration-500 ease-out pointer-events-none ${
           hoveredKey ? "opacity-100" : "opacity-0"
@@ -137,22 +139,16 @@ const Navbar = ({ navbarRef }) => {
           <h1 className="text-[28px] flex-shrink-0 cursor-pointer flex items-center font-bold">
             Rise at Seve{" "}
             <img
-              src={isFloating ? "logo2.webp" : "logo1.webp"}
+              src={isFloating ? `${import.meta.env.BASE_URL}logo2.webp` : `${import.meta.env.BASE_URL}logo1.webp`}
               alt="Logo"
               className="h-[24px] mt-1"
             />
           </h1>
 
+          {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center gap-1 text-[16px] font-medium tracking-tight">
             {[
-              "Services+",
-              "Industries+",
-              "International+",
-              "About+",
-              "Work",
-              "Careers",
-              "Blog And Resources+",
-              "Webinar",
+              "Services+", "Industries+", "International+", "About+", "Work", "Careers", "Blog And Resources+", "Webinar",
             ].map((item) => (
               <div
                 key={item}
@@ -266,24 +262,24 @@ const Navbar = ({ navbarRef }) => {
 
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 z-[1000]  flex items-center justify-center p-2 animate-in fade-in duration-200">
+        <div className="fixed inset-0 z-[1000] flex items-center justify-center p-2 animate-in fade-in duration-200">
           <div
-            className="absolute inset-0 bg-black/20 backdrop-blur-sm "
+            className="absolute inset-0 bg-black/20 backdrop-blur-sm"
             onClick={() => setIsMobileMenuOpen(false)}
           />
-          <div className="relative bg-[#1a1a1a]/50 backdrop-blur-[2px] flex flex-col font-sans text-white h-full w-full rounded-[32px] overflow-hidden shadow-2xl border border-white/10 transition-all duration-300 ">
+          <div className="relative bg-[#1a1a1a]/50 backdrop-blur-[2px] flex flex-col font-sans text-white h-full w-full rounded-[32px] overflow-hidden shadow-2xl border border-white/10 transition-all duration-300">
             <div className="flex justify-between items-center px-7 border-b border-white/20 py-6 flex-shrink-0 pl-3 pr-5">
-              <h1 className="text-[20px] font-medium flex-shrink-0  cursor-pointer flex items-center">
+              <h1 className="text-[20px] font-medium flex-shrink-0 cursor-pointer flex items-center">
                 Rise at Seve{" "}
                 <img
-                  src={isFloating ? "logo2.webp" : "logo1.webp"}
+                  src={isFloating ? `${import.meta.env.BASE_URL}logo2.webp` : `${import.meta.env.BASE_URL}logo1.webp`}
                   alt="Logo"
                   className="h-[21px] mt-1"
                 />
               </h1>
               <button
                 onClick={() => setIsMobileMenuOpen(false)}
-                className="w-6 h-4 flex items-center justify-center relative focus:outline-none group"
+                className="w-6 h-4 flex items-center justify-center relative focus:outline-none"
               >
                 <div className="relative w-full h-full">
                   <div
@@ -295,23 +291,16 @@ const Navbar = ({ navbarRef }) => {
                 </div>
               </button>
             </div>
-            <div className="flex-1 overflow-y-auto px-3 pb-36 pt-2 scrollbar-hide ">
+            <div className="flex-1 overflow-y-auto px-3 pb-36 pt-2 scrollbar-hide">
               {[
-                "Services+",
-                "Industries+",
-                "International+",
-                "About+",
-                "Work",
-                "Careers",
-                "Blog And Resources+",
-                "Webinar",
+                "Services+", "Industries+", "International+", "About+", "Work", "Careers", "Blog And Resources+", "Webinar",
               ].map((item) => (
                 <div key={item} className="mb-2 border-b border-white/20">
                   {menuData[item] ? (
                     <div>
                       <button
                         onClick={() => toggleMobileSubMenu(item)}
-                        className="w-full flex justify-between items-center font-medium text-[30px] tracking-tighter  text-white"
+                        className="w-full flex justify-between items-center font-medium text-[30px] tracking-tighter text-white"
                       >
                         {item.replace("+", "")}
                         {expandedMobileMenus[item] ? (
