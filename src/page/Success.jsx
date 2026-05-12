@@ -4,13 +4,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const Succes = () => {
+const Success = () => {
   const marqueeRef = useRef(null);
   const timeline = useRef(null);
 
+  // ইমেজ পাথগুলোতে BASE_URL যোগ করা হয়েছে
   const logos = [
-    "/s1.png", "/s8.png", "/s3.png", "/s4.png", "/s5.png",
-    "/s6.png", "/s1.png", "/s8.png", "/s9.png", "/s10.png",
+    `${import.meta.env.BASE_URL}s1.png`,
+    `${import.meta.env.BASE_URL}s8.png`,
+    `${import.meta.env.BASE_URL}s3.png`,
+    `${import.meta.env.BASE_URL}s4.png`,
+    `${import.meta.env.BASE_URL}s5.png`,
+    `${import.meta.env.BASE_URL}s6.png`,
+    `${import.meta.env.BASE_URL}s1.png`,
+    `${import.meta.env.BASE_URL}s8.png`,
+    `${import.meta.env.BASE_URL}s9.png`,
+    `${import.meta.env.BASE_URL}s10.png`,
   ];
 
   useEffect(() => {
@@ -76,10 +85,10 @@ const Succes = () => {
         </div>
       </div>
 
-      {/* মেইন কন্টেন্ট গ্রিড: image_ee2ed8.png অনুযায়ী আপডেট করা */}
+      {/* মেইন কন্টেন্ট গ্রিড */}
       <div className="max-w-[2040px] mx-auto px-6 md:px-20 grid grid-cols-1 md:grid-cols-12 gap-y-10 md:gap-x-16 items-start">
         
-        {/* ১. হেডলাইন: মোবাইলে সবার উপরে (order-1), ডেস্কটপে ডান পাশে (md:order-2) */}
+        {/* ১. হেডলাইন */}
         <div className="order-1 md:order-2 md:col-span-7">
           <div className="flex items-center relative">
             <h1 className="text-[49px] md:text-[60px] lg:text-[75px] xl:text-[90px] font-medium tracking-tight leading-[1.1] md:leading-[1.05]">
@@ -87,7 +96,7 @@ const Succes = () => {
               <span className="flex items-center gap-2 ">
                 Discovery{" "}
                 <img
-                  src="/success.webp"
+                  src={`${import.meta.env.BASE_URL}success.webp`}
                   alt="Success Icon"
                   className="h-[48px] w-[48px] md:h-[68px] md:w-[67.8px] lg:h-[81px] lg:w-[81px] rounded-xl object-cover"
                 />
@@ -104,7 +113,7 @@ const Succes = () => {
           </p>
         </div>
 
-        {/* ৩. বাটন কন্টেইনার: মোবাইলে সবার নিচে (order-3), ডেস্কটপে হেডলাইনের নিচে (md:order-3) */}
+        {/* ৩. বাটন কন্টেইনার */}
         <div className="order-3 md:order-3 md:col-span-7 flex flex-col md:flex-row gap-4 w-full ">
           <SlidingButton text="Our Story" isPrimary={true} />
           <SlidingButton text="Our Services" isPrimary={false} />
@@ -115,4 +124,4 @@ const Succes = () => {
   );
 };
 
-export default Succes;
+export default Success;
