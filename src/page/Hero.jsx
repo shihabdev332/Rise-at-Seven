@@ -18,8 +18,9 @@ const Hero = () => {
   const centerImgRef = useRef(null);
 
   useEffect(() => {
+    // র্যান্ডম ইমেজ সিলেকশন লজিক এবং BASE_URL যুক্ত করা
     const randomNumber = Math.floor(Math.random() * 7) + 1;
-    setHeroImage(`/hero${randomNumber}.webp`);
+    setHeroImage(`${import.meta.env.BASE_URL}hero${randomNumber}.webp`);
 
     const tl = gsap.timeline();
 
@@ -57,7 +58,6 @@ const Hero = () => {
         ease: "power3.inOut",
         clipPath: "ellipse(200% 100% at 50% 0%)",
         onComplete: () => {
-          // Keep essential layout properties after animation
           gsap.set(topHeaderRef.current, {
             clearProps: "position,top,left,width,height,zIndex,margin,clipPath",
           });
@@ -115,15 +115,12 @@ const Hero = () => {
           ref={topHeaderRef}
           className="w-full h-full bg-[#b1f5df] text-black flex items-center justify-center rounded-xl group cursor-pointer overflow-hidden"
         >
-          {/* Inner Wrapper for proper clipping and hover effect */}
           <div className="h-[36px] overflow-hidden">
             <div
               ref={topHeaderTextRef}
               className="flex flex-col transition-transform duration-[200ms] ease-[cubic-bezier(0.65,0,0.35,1)] group-hover:-translate-y-1/2 transform-gpu"
             >
-              <span
-                className="flex items-center justify-center h-[36px] text-[12px] lg:text-[14px] font-bold px-4"
-              >
+              <span className="flex items-center justify-center h-[36px] text-[12px] lg:text-[14px] font-bold px-4">
                 🚨 The Category Leaderboard - Live Now
               </span>
               <span className="flex items-center justify-center h-[36px] tracking-tight text-[12px] lg:text-[14px] font-bold px-4">
@@ -136,7 +133,6 @@ const Hero = () => {
 
       {/* Main Hero Section */}
       <section className="relative h-[calc(100vh-44px)] overflow-hidden rounded-3xl bg-[#0f1b3e] flex flex-col">
-        {/* Dynamic Background Image */}
         {heroImage && (
           <img
             src={heroImage}
@@ -146,7 +142,7 @@ const Hero = () => {
         )}
         <div className="absolute inset-0 bg-black/30 backdrop-blur-[10px] z-0" />
 
-        <Navbar navbarRef={navbarRef}/>
+        <Navbar navbarRef={navbarRef} />
 
         <div className="relative z-20 flex-grow flex flex-col items-center justify-center text-center text-white px-4 pt-0 ">
           <div className="flex flex-col items-center mb-3">
@@ -155,32 +151,32 @@ const Hero = () => {
             </p>
             <div className="flex items-center justify-center gap-2 h-[35px]">
               <img
-                src="/laurem1.png"
+                src={`${import.meta.env.BASE_URL}laurem1.png`}
                 alt="Laurel"
                 className="h-full object-contain rotate-48"
               />
               <img
-                src="/b1.webp"
+                src={`${import.meta.env.BASE_URL}b1.webp`}
                 alt="Award"
                 className="h-[15px] md:h-[20px] object-contain"
               />
               <img
-                src="/b2.webp"
+                src={`${import.meta.env.BASE_URL}b2.webp`}
                 alt="Award"
                 className="h-[15px] md:h-[20px] object-contain"
               />
               <img
-                src="/b3.webp"
+                src={`${import.meta.env.BASE_URL}b3.webp`}
                 alt="Award"
                 className="h-[15px] md:h-[20px] object-contain"
               />
               <img
-                src="/b4.webp"
+                src={`${import.meta.env.BASE_URL}b4.webp`}
                 alt="Award"
                 className="w-[50px] h-[22px] object-contain hidden lg:inline"
               />
               <img
-                src="/laurem2.png"
+                src={`${import.meta.env.BASE_URL}laurem2.png`}
                 alt="Laurel"
                 className="h-full object-contain rotate-[-48deg]"
               />
