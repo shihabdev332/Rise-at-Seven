@@ -307,6 +307,7 @@ const FeaturedWork = () => {
                     <img
                       src={project.img}
                       alt={project.title}
+                      loading="lazy"
                       className={`w-full h-full max-w-[1000px] max-h-[900px] object-cover transition-transform duration-[1.2s] ease-out ${isHoveredImage ? "scale-110" : "scale-100"}`}
                     />
 
