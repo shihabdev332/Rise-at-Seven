@@ -132,7 +132,7 @@ const Footer = () => {
           <h1 className="text-[16vw] leading-none font-medium text-white select-none whitespace-nowrap tracking-tighter flex items-center">
             Rise at Seve
             <img
-              src="/logo1.webp"
+             src={`${import.meta.env.BASE_URL}logo1.webp`}
               alt="Logo"
               className="inline-block w-[11vw] h-[13vw] object-cover mx-[1vw] rounded-xl mt-4 md:mt-10"
             />
