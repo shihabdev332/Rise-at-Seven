@@ -204,6 +204,7 @@ const Navbar = ({ navbarRef }) => {
                   <img
                     src={activeImage}
                     alt="Preview"
+                    loading="lazy"
                     className="w-full h-full object-cover transition-opacity duration-300"
                   />
                   {hoveredKey === "Services+" && (
