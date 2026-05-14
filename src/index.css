@@ -1,31 +1,28 @@
-@import "tailwindcss";
-
-@theme {
-  --font-sans: "Saans", ui-sans-serif, system-ui, sans-serif;
-}
-
 @font-face {
   font-family: 'Saans';
-  src: url('./assets/font/SaansRegular.woff2') format('woff2');
+  src: url('/assets/font/SaansRegular.woff2') format('woff2');
   font-weight: 400;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Saans';
-  src: url('./assets/font/SaansMedium.woff2') format('woff2');
+  src: url('/assets/font/SaansMedium.woff2') format('woff2');
   font-weight: 500;
   font-display: swap;
 }
 
 @font-face {
   font-family: 'Saans';
-  src: url('./assets/font/SaansBold.woff2') format('woff2');
+  src: url('/assets/font/SaansBold.woff2') format('woff2');
   font-weight: 700;
   font-display: swap;
 }
 
 body {
-    background-color: #feffff;
-    font-family: var(--font-sans); /* সরাসরি থিম ভেরিয়েবল ব্যবহার করা ভালো */
+  background-color: #feffff;
+  font-family: var(--font-sans);
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
